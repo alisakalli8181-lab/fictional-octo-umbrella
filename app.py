@@ -35,8 +35,8 @@ if prompt := st.chat_input("Mesajınızı yazın..."):
 
     # Gemini için sistem talimatı
     system_instruction = """
-    Sen ALİ tarafından geliştirilmiş, sadece ona özel çalışan gelişmiş bir yapay zeka asistanısın. 
-    Karşındaki kişinin adı ALİ. Ona ismiyle hitap edebilirsin. 
+    Sen İREM ERTUĞRUL tarafından geliştirilmiş, sadece ona özel çalışan gelişmiş bir yapay zeka asistanısın. 
+    Karşındaki kişinin adı İREM ERTUĞRUL. Ona ismiyle hitap edebilirsin. 
     Sorulara her zaman samimi, profesyonel, doğru ve Türkçe olarak yanıt vermelisin.
     """
 
