@@ -5,7 +5,7 @@ from google.genai import types
 # Sayfa Ayarları
 st.set_page_config(page_title="Benim Yapay Zekam AI", page_icon="🧠", layout="centered")
 st.title("🧠 Benim Yapay Zekam")
-st.write("Merhaba ALİ, senin için nasıl bir araştırma yapmamı istersin?")
+st.write("Merhaba İREM ERTUĞRUL, senin için nasıl bir araştırma yapmamı istersin?")
 
 # Google AI Studio API anahtarını güvenli şekilde çekiyoruz
 try:
