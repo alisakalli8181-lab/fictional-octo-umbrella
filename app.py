@@ -9,10 +9,11 @@ KULLANICI_ADI = "ALİ"  # Kendi adınızı yazın
 ASISTAN_ADI = "AGİE"  # Yapay zekanıza vermek istediğiniz adı yazın
 # ==========================================
 
-# Sayfa Ayarları
-st.set_page_config(page_title=f"{AGİE} AI", page_icon="🧠", layout="centered")
-st.title(f"🧠 {AGİE}")
-st.write(f"Merhaba {ALİ}, senin için nasıl bir araştırma yapmamı istersin?")
+st.set_page_config(page_title="Benim Yapay Zekam AI", page_icon="🧠", layout="centered")
+st.title("🧠 Benim Yapay Zekam")
+st.write("Merhaba ALİ, senin için nasıl bir araştırma yapmamı istersin?")
+
+
 
 # Google AI Studio API anahtarını Hugging Face ayarlarından çekiyoruz
 try:
