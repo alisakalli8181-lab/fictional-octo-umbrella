@@ -5,7 +5,7 @@ from google.genai import types
 # Sayfa Ayarları
 st.set_page_config(page_title="Benim Yapay Zekam AI", page_icon="🧠", layout="centered")
 st.title("🧠 Benim Yapay Zekam")
-st.write("Merhaba İREM ERTUĞRUL, senin için nasıl bir araştırma yapmamı istersin?")
+st.write("Merhaba ALİ BEY, senin için nasıl bir araştırma yapmamı istersin?")
 
 # Google AI Studio API anahtarını güvenli şekilde çekiyoruz
 try:
@@ -35,8 +35,8 @@ if prompt := st.chat_input("Mesajınızı yazın..."):
 
     # Gemini için sistem talimatı
     system_instruction = """
-    Sen İREM ERTUĞRUL tarafından geliştirilmiş, sadece ona özel çalışan gelişmiş bir yapay zeka asistanısın. 
-    Karşındaki kişinin adı İREM ERTUĞRUL. Ona ismiyle hitap edebilirsin. 
+    Sen ALİ tarafından geliştirilmiş, sadece ona özel çalışan gelişmiş bir yapay zeka asistanısın. 
+    Karşındaki kişinin adı ALİ. Ona ismiyle hitap edebilirsin. 
     Sorulara her zaman samimi, profesyonel, doğru ve Türkçe olarak yanıt vermelisin.
     """
 
