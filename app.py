@@ -44,7 +44,7 @@ if prompt := st.chat_input("Mesajınızı yazın..."):
     with st.chat_message("assistant"):
         try:
             response = client.models.generate_content(
-                model='gemini-2.6-flash',
+                model='gemini-3.5-flash',
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     system_instruction=system_instruction,
