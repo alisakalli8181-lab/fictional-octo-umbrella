@@ -2,27 +2,19 @@ import streamlit as st
 from google import genai
 from google.genai import types
 
-# ==========================================
-# KİŞİSELLEŞTİRME ALANI (Buraları Kendine Göre Değiştir)
-# ==========================================
-KULLANICI_ADI = "ALİ"  # Kendi adınızı yazın
-ASISTAN_ADI = "AGİE"  # Yapay zekanıza vermek istediğiniz adı yazın
-# ==========================================
-
+# Sayfa Ayarları
 st.set_page_config(page_title="Benim Yapay Zekam AI", page_icon="🧠", layout="centered")
 st.title("🧠 Benim Yapay Zekam")
 st.write("Merhaba ALİ, senin için nasıl bir araştırma yapmamı istersin?")
 
-
-
-# Google AI Studio API anahtarını Hugging Face ayarlarından çekiyoruz
+# Google AI Studio API anahtarını güvenli şekilde çekiyoruz
 try:
     api_key = st.secrets["GEMINI_API_KEY"]
 except:
-    st.error("Lütfen Hugging Face Settings -> Variables and secrets bölümünden GEMINI_API_KEY tanımlayın!")
+    st.error("Lütfen Secrets bölümünden GEMINI_API_KEY tanımlayın!")
     st.stop()
 
-# Yeni ve güncel Google GenAI istemcisini başlatıyoruz
+# Google GenAI istemcisini başlatıyoruz
 client = genai.Client(api_key=api_key)
 
 # Sohbet geçmişini tarayıcı hafızasında tutmak için
@@ -41,28 +33,26 @@ if prompt := st.chat_input("Mesajınızı yazın..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Gemini için sistem talimatı (Yapay zekanın karakterini belirliyoruz)
-    system_instruction = f"""
-    Sen {ALİ} tarafından geliştirilmiş, sadece ona özel çalışan '{AGİE}' adında gelişmiş bir yapay zeka asistanısın. 
-    Karşındaki kişinin adı {KULLANICI_ADI}. Ona ismiyle hitap edebilirsin. 
-    Sorulara her zaman samimi, profesyonel ve Türkçe olarak yanıt vermelisin.
+    # Gemini için sistem talimatı
+    system_instruction = """
+    Sen ALİ tarafından geliştirilmiş, sadece ona özel çalışan gelişmiş bir yapay zeka asistanısın. 
+    Karşındaki kişinin adı ALİ. Ona ismiyle hitap edebilirsin. 
+    Sorulara her zaman samimi, profesyonel, doğru ve Türkçe olarak yanıt vermelisin.
     """
 
     # Gemini'dan yanıt üret
     with st.chat_message("assistant"):
         try:
-            # En güncel ve genel kullanım için en ideal model olan gemini-2.5-flash modelini kullanıyoruz
             response = client.models.generate_content(
                 model='gemini-2.5-flash',
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     system_instruction=system_instruction,
-                    temperature=0.7 # Yaratıcılık seviyesi (0.0 daha net/sabit, 1.0 daha yaratıcı)
+                    temperature=0.7
                 )
             )
             answer = response.text
             st.markdown(answer)
-            # Asistan yanıtını hafızaya ekle
             st.session_state.messages.append({"role": "assistant", "content": answer})
         except Exception as e:
             st.error(f"Bir hata oluştu: {e}")
